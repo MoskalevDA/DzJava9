@@ -1,3 +1,5 @@
+package ru.netolohy.radio;
+
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +11,18 @@ public class TestRadio {
         Radio rad = new Radio();
 
         rad.setCurrentStation(10);
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetLessZero() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(-1);
 
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -30,13 +44,13 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldNextStationMoreBorder() {
+    public void shouldNextStationZero() {
         Radio rad = new Radio();
-        rad.setCurrentStation(5);
+        rad.setCurrentStation(9);
 
         rad.next();
 
-        int expected = 6;
+        int expected = 0;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -69,6 +83,19 @@ public class TestRadio {
     }
 
     @Test
+    public void shouldVolumeUpHundred() {
+        Radio rad = new Radio();
+        rad.setCurrentVolume(100);
+
+        rad.volumeUp();
+
+        int expected = 0;
+        int actual = rad.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldVolumeDown() {
         Radio rad = new Radio();
         rad.setCurrentVolume(0);
@@ -80,4 +107,30 @@ public class TestRadio {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSetVolume() {
+        Radio rad = new Radio();
+
+        rad.setCurrentVolume(101);
+
+        int expected = 0;
+        int actual = rad.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetVolumeLessZero() {
+        Radio rad = new Radio();
+
+        rad.setCurrentVolume(-1);
+
+        int expected = 0;
+        int actual = rad.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 }

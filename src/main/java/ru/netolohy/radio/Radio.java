@@ -1,9 +1,12 @@
+package ru.netolohy.radio;
+
 public class Radio {
     private int currentStation;
 
     public int getCurrentStation() {
         return currentStation;
     }
+
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
             return;
@@ -13,13 +16,21 @@ public class Radio {
         }
         currentStation = newCurrentStation;
     }
-    public void next() {
+
+    public int next() {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
+            {
+                return currentStation;
+            }
         }
-        if (currentStation > 9) {
+        if (currentStation >= 9) {
             currentStation = 0;
+            {
+                return 0;
+            }
         }
+        return 0;
     }
 
     public void prev() {
@@ -30,11 +41,13 @@ public class Radio {
             currentStation = 9;
         }
     }
+
     private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
     }
+
     public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < 0) {
             return;
@@ -46,8 +59,8 @@ public class Radio {
     }
 
     public void volumeUp() {
-        if (currentVolume < 100) {
-            currentVolume = currentVolume +1;
+        if (currentVolume <= 100) {
+            currentVolume = currentVolume + 1;
         }
         if (currentVolume > 100) {
             currentVolume = 0;
@@ -56,7 +69,7 @@ public class Radio {
 
     public void volumeDown() {
         if (currentVolume < 100) {
-            currentVolume = currentVolume -1;
+            currentVolume = currentVolume - 1;
         }
         if (currentVolume < 0) {
             currentVolume = 100;
