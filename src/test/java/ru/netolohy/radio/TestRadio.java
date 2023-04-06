@@ -7,20 +7,20 @@ import org.junit.jupiter.api.Assertions;
 public class TestRadio {
 
     @Test
-    public void shouldSetStation() {
-        Radio rad = new Radio();
+    void shouldSetStation() {
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(10);
 
-        int expected = 0;
+        int expected = 10;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldSetLessZero() {
-        Radio rad = new Radio();
+    void shouldSetLessZero() {
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(-1);
 
@@ -31,8 +31,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldNextStation() {
-        Radio rad = new Radio();
+    void shouldNextStation() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(8);
 
         rad.next();
@@ -44,21 +44,21 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldNextStationZero() {
-        Radio rad = new Radio();
+    void shouldNextStationZero() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(9);
 
         rad.next();
 
-        int expected = 0;
+        int expected = 10;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldNext7To8() {
-        Radio rad = new Radio();
+    void shouldNext7To8() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(7);
 
         rad.next();
@@ -70,8 +70,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldNext1To2() {
-        Radio rad = new Radio();
+    void shouldNext1To2() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(1);
 
         rad.next();
@@ -83,8 +83,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldPrevStation() {
-        Radio rad = new Radio();
+    void shouldPrevStation() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(0);
 
         rad.prev();
@@ -96,8 +96,8 @@ public class TestRadio {
     }
 
     @Test
-    public void prevStation() {
-        Radio rad = new Radio();
+    void prevStation() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(8);
 
         rad.prev();
@@ -109,10 +109,9 @@ public class TestRadio {
     }
 
 
-
     @Test
-    public void prevStationMoreBorder() {
-        Radio rad = new Radio();
+    void prevStationMoreBorder() {
+        Radio rad = new Radio(10);
         rad.setCurrentStation(9);
 
         rad.prev();
@@ -124,8 +123,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldVolumeUp() {
-        Radio rad = new Radio();
+    void shouldVolumeUp() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(99);
 
         rad.volumeUp();
@@ -137,8 +136,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldVolumeUpZero() {
-        Radio rad = new Radio();
+    void shouldVolumeUpZero() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(0);
 
         rad.volumeUp();
@@ -150,8 +149,8 @@ public class TestRadio {
     }
 
     @Test
-    public void volumeUpMiddle() {
-        Radio rad = new Radio();
+    void volumeUpMiddle() {
+        Radio rad = new Radio(1);
         rad.setCurrentVolume(50);
 
         rad.volumeUp();
@@ -163,10 +162,10 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldSetVolume() {
-        Radio rad = new Radio();
+    void shouldSetVolume() {
+        Radio rad = new Radio(10);
 
-        rad.setCurrentVolume(101);
+        rad.setCurrentVolume(102);
 
         int expected = 0;
         int actual = rad.getCurrentVolume();
@@ -175,8 +174,8 @@ public class TestRadio {
     }
 
     @Test
-    public void shouldSetVolumeLessZero() {
-        Radio rad = new Radio();
+    void shouldSetVolumeLessZero() {
+        Radio rad = new Radio(10);
 
         rad.setCurrentVolume(-1);
 
@@ -187,8 +186,8 @@ public class TestRadio {
     }
 
     @Test
-    public void volumeDownMiddle() {
-        Radio rad = new Radio();
+    void volumeDownMiddle() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(50);
 
         rad.volumeDown();
@@ -200,8 +199,8 @@ public class TestRadio {
     }
 
     @Test
-    public void volumeDown1To0 () {
-        Radio rad = new Radio();
+    void volumeDown1To0() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(1);
 
         rad.volumeDown();
@@ -213,8 +212,8 @@ public class TestRadio {
     }
 
     @Test
-    public void volumeDown100To99() {
-        Radio rad = new Radio();
+    void volumeDown100To99() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(100);
 
         rad.volumeDown();
@@ -226,8 +225,8 @@ public class TestRadio {
     }
 
     @Test
-    public void should0() {
-        Radio rad = new Radio();
+    void should0() {
+        Radio rad = new Radio(10);
         rad.setCurrentVolume(0);
 
         rad.volumeDown();
@@ -237,4 +236,4 @@ public class TestRadio {
 
         Assertions.assertEquals(expected, actual);
     }
-}
+        }

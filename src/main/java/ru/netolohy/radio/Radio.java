@@ -2,17 +2,29 @@ package ru.netolohy.radio;
 
 public class Radio {
     private int currentStation;
+    private int minRadioStation;
+    private int maxRadioStation;
     private int currentVolume;
+    private int minVolume;
+    private int maxVolume = 101;
+
+    public Radio(int maxRadioStation) {
+        this.maxRadioStation = maxRadioStation;
+    }
+
+    public Radio() {
+        maxRadioStation = 10;
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
+        if (currentStation < minRadioStation) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxRadioStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -22,42 +34,42 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (currentVolume > maxVolume) {
             return;
         }
-        currentVolume = newCurrentVolume;
+        this.currentVolume = currentVolume;
     }
 
     public void next() {
-        if (currentStation >= 9) {
+        if (currentStation >= maxRadioStation) {
             setCurrentStation(0);
         } else {
-            setCurrentStation(currentStation + 1);
+            this.currentStation++;
         }
     }
 
 
     public void prev() {
-        if (currentStation <= 0) {
+        if (currentStation <= minRadioStation) {
             setCurrentStation(9);
         } else {
-            setCurrentStation(currentStation - 1);
+            this.currentStation--;
 
         }
     }
 
     public void volumeUp() {
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void volumeDown() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
 
         }
