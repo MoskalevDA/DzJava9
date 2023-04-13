@@ -2,18 +2,18 @@ package ru.netolohy.radio;
 
 public class Radio {
     private int currentStation;
-    private int minRadioStation;
-    private int maxRadioStation;
+    private int minRadioStation = 0;
+    private int quantityRadioStations;
     private int currentVolume;
     private int minVolume;
-    private int maxVolume = 101;
+    private int maxVolume = 100;
 
-    public Radio(int maxRadioStation) {
-        this.maxRadioStation = maxRadioStation;
+    public Radio(int standardRadioStations) {
+        this.quantityRadioStations = standardRadioStations;
     }
 
     public Radio() {
-        maxRadioStation = 10;
+        quantityRadioStations = 9;
     }
 
     public int getCurrentStation() {
@@ -24,7 +24,7 @@ public class Radio {
         if (currentStation < minRadioStation) {
             return;
         }
-        if (currentStation > maxRadioStation) {
+        if (currentStation > quantityRadioStations) {
             return;
         }
         this.currentStation = currentStation;
@@ -45,7 +45,7 @@ public class Radio {
     }
 
     public void next() {
-        if (currentStation >= maxRadioStation) {
+        if (currentStation >= quantityRadioStations) {
             setCurrentStation(0);
         } else {
             this.currentStation++;
