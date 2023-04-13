@@ -10,9 +10,9 @@ public class TestRadio {
     void shouldSetStation() {
         Radio rad = new Radio(10);
 
-        rad.setCurrentStation(10);
+        rad.setCurrentStation(9);
 
-        int expected = 10;
+        int expected = 9;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -33,11 +33,11 @@ public class TestRadio {
     @Test
     void shouldNextStation() {
         Radio rad = new Radio(10);
-        rad.setCurrentStation(8);
+        rad.setCurrentStation(9);
 
         rad.next();
 
-        int expected = 9;
+        int expected = 0;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -50,7 +50,7 @@ public class TestRadio {
 
         rad.next();
 
-        int expected = 10;
+        int expected = 0;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -236,4 +236,49 @@ public class TestRadio {
 
         Assertions.assertEquals(expected, actual);
     }
-        }
+
+    @Test
+    void should100to100() {
+        Radio rad = new Radio(1);
+        rad.setCurrentVolume(100);
+
+        rad.volumeUp();
+
+        int expected = 100;
+        int actual = rad.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void setCurrentNewRadioStationMax() {
+        Radio rad = new Radio(50);
+        rad.setCurrentStation(47);
+
+        int expected = 47;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldOverMax() {
+        Radio rad = new Radio(10);
+        rad.setCurrentStation(10);
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void defaultRadio() {
+        Radio rad = new Radio();
+
+        int expected = 9;
+        int actual = rad.getMaxRadioStations();
+
+        Assertions.assertEquals(expected, actual);
+    }
+}
