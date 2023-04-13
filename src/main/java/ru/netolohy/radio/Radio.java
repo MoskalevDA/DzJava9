@@ -3,11 +3,6 @@ package ru.netolohy.radio;
 public class Radio {
     private int currentStation;
     private int minRadioStation = 0;
-
-    public int getMaxRadioStations() {
-        return maxRadioStations;
-    }
-
     private int maxRadioStations = 9;
     private int currentVolume;
     private int minVolume;
@@ -19,6 +14,10 @@ public class Radio {
 
     public Radio() {
 
+    }
+
+    public int getMaxRadioStations() {
+        return maxRadioStations;
     }
 
     public int getCurrentStation() {
